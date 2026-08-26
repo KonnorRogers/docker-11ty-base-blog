@@ -1,0 +1,27 @@
+# This file is only used for development. This is not used for the actual app.
+services:
+  app:
+    build:
+      context: .
+      args:
+        NODE_VERSION: ${NODE_VERSION:-22}
+    command: bash -c "npm run start"
+    # env_file: ./.env # if you have a .env file.
+    environment:
+      - CHOKIDAR_USEPOLLING=true # not 100% this is needed for 11ty file watching?
+      - IN_DOCKER=true
+
+    working_dir: '/app'
+    volumes:
+      # We need to mount the repo as a volume so we can properly load schema files.
+      - '.:/app'
+      # This ignores node_modules locally which fixes some issues with ESBuild
+      # https://stackoverflow.com/questions/29181032/add-a-volume-to-docker-but-exclude-a-sub-folder
+      - 'node_modules:/app/node_modules'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    ports:
+      - '8080:8080'
+    stdin_open: true
+
+volumes:
+  node_modules:
