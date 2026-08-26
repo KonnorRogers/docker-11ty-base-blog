@@ -1,3 +1,21 @@
+## Small start on top of 11ty base blog.
+
+Commands:
+
+```bash
+docker compose up --build
+```
+
+^ Builds + starts container
+
+To get a bash instance:
+
+```
+docker compose exec -it app /bin/bash
+```
+
+From the bash instance, you can call `npm install`
+
 # eleventy-base-blog v9
 
 A starter repository showing how to build a blog with the [Eleventy](https://www.11ty.dev/) site generator (using the [v3.0 release](https://github.com/11ty/eleventy/releases/tag/v3.0.0)).
