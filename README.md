@@ -14,7 +14,7 @@ To get a bash instance:
 docker compose exec -it app /bin/bash
 ```
 
-From the bash instance, you can call `npm install`
+From the bash instance, you can call `npm install <pkg>`
 
 # eleventy-base-blog v9
 
